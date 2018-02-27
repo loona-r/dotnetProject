@@ -1,19 +1,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using Isen.DotNet.Library.Models.Implementation;
+using Isen.DotNet.Library.Repositories.Interfaces;
 
 namespace Isen.DotNet.Library.Repositories.InMemory
 {
-    public interface IInMemoryCityRepository
-    {
-        IList<City> GetAll();
-        City Single(int id);
-    }
 
-    public class InMemoryCityRepository : IInMemoryCityRepository
+    public class InMemoryCityRepository : BaseRepository<City>, ICityRepository
     {
         private IList<City> _cityCollection;
-        public IList<City> CityCollection
+        public override IList<City> ModelCollection
         {
             get
             {
@@ -30,11 +26,5 @@ namespace Isen.DotNet.Library.Repositories.InMemory
                 return  _cityCollection;
             }
         }
-
-        public IList<City> GetAll() => CityCollection;
-        public City Single(int id) => 
-            CityCollection.SingleOrDefault(c => c.Id == id);
-        public City Single(string name) => 
-            CityCollection.FirstOrDefault(c => c.Name == name);
     }
 }

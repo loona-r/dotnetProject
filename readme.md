@@ -124,3 +124,8 @@ Extraire l'interface de ce repo dans
 ## Refractoring interface : extraire IBaseRepository
 
 Déplacer les 3 méthodes de l'interface vers IBaseRepository
+
+## Refractoring Repository
+
+* Créer la classe bastraite Repositories/Base/\_BaseRepository.cs
+* Déplacer la logique CityRepository vers cette classe
