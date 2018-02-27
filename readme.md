@@ -13,9 +13,9 @@
 `touch readme.md`  
 `code .`
 
-# Creation de l'espace de travail
+# Création de l'espace de travail
 
-## Creation d'un projet console
+## Création d'un projet console
 
 Depuis le dossier Isen.DotNet :  
 `mkdir Isen.DotNet.ConsoleApp`  
@@ -33,9 +33,29 @@ Commit : `git commit -m "Initial commit"`
 Prendre en compte les modifs (**mais pas les ajouts de fichiers**) au moment du commit (donc faire un add et un commut en même temps :
 `git commit -a -m "updated readme"`)
 
-## Creation d'un projet librairie
+## Création d'un projet librairie
 
 Depuis le dossier Isen.DotNet :  
 `mkdir Isen.DotNet.Library`  
 `cd Isen.DotNet.Library`  
 `dotnet new classlib`
+
+## Ajout de la librairie en référence du projet console
+
+Depuis le dossier du projet Console :
+`dotnet add reference ..\Isen.DotNet.Library\Isen.DotNet.Library.csproj`  
+Coder la classe Hello.
+Dans le Program.cs, ajouter le using, et appeler la classe Hello.
+
+## Création d'une solution et ajout des projets
+
+Depuis le dossier racine
+Créer le fichier solution :  
+`dotnet new sln`  
+Ajouter le projet librairie :  
+`dotnet sln add Isen.DotNet.Library\Isen.DotNet.Library.csproj`
+Ajouter le projet console :  
+`dotnet sln add Isen.DotNet.ConsoleApp\Isen.DotNet.ConsoleApp.csproj`
+Commit git :  
+`git add .`  
+`git commit -m "Console, lib, solution"`
