@@ -13,8 +13,14 @@ namespace Isen.DotNet.Library {
         // Renvoie des salutations
         public static string Greet (string name)
         {
-            string message = "Hello, " + name;
+            var time = DateTime.Now.ToString("HH:mm");
+            var oldMessage = String.Format("Hello {0}, it is {1}.", name, time);
+            var message = $"Hello {name}, it is {time}.";
             return message;
         }
+
+        // expression body =>
+        // même symbole qu'une lamba expression
+        public static string GreetUpper (string name) => Greet(name.ToUpper());
     }
 }

@@ -59,3 +59,39 @@ Ajouter le projet console :
 Commit git :  
 `git add .`  
 `git commit -m "Console, lib, solution"`
+
+## Ajout d'un projet de test
+
+TDD = Test Driven Development
+Depuis le dossier racine : `mkdir Isen.DotNet.Tests && cd Isen.DotNet.Tests`  
+Créer le projet le tests : `dotnet new xunit`  
+Ajouter ce projet à la solution (depuis le dossier racine) : `dotnet sln add Isen.DotNet.Tests\Isen.DotNet.Tests.csproj`  
+Depuis le dossier du projet de tests : `dotnet add reference ..\Isen.DotNet.Library\Isen.DotNet.Library.csproj`
+
+## Push du projet sur un repo remote
+
+Créer un projet sur le serveur Git de votre choix (GitHub, GitLab)  
+L'url de mon repo est https://github.com/loona-r/dotnetProject.git  
+`git remote add origin https://github.com/loona-r/dotnetProject.git`  
+Push, en indiquant que master correspond à origin/master  
+`git push -u origin master`
+
+## Ajout d'un tag Git
+
+Créer le tag dans le repo local  
+`git tag v0.1`  
+Pusher le tag dans le remote repo  
+`git push origin v0.1`
+
+## Ajout d'un modèle
+
+Dans le projet Library :
+
+* Créer un dossier Models/Implementation
+* Créer une classe Person :
+  * `Id` (int)
+  * `Name` (string)
+  * `FirstName` (string)
+  * `LastName` (string)
+  * `BirthDate` (DateTime)
+* Créer une classe City
