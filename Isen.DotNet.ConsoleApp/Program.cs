@@ -9,6 +9,9 @@ namespace Isen.DotNet.ConsoleApp
         {
             string result = Hello.Greet("Loona");
             Console.WriteLine(result);
+
+            string result2 = Hello.World;
+            Console.WriteLine(result2);
         }
     }
 }
