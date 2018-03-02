@@ -129,3 +129,31 @@ Déplacer les 3 méthodes de l'interface vers IBaseRepository
 
 * Créer la classe bastraite Repositories/Base/\_BaseRepository.cs
 * Déplacer la logique CityRepository vers cette classe
+
+## Appliquer au modèle Person
+* Dupliquer ICityRepository vers IPersonRepository et adapter ce qui doit l'être  
+* Dupliquer InMemoryCityRepository afin de créer InMemoryPersonRepository  
+
+# Ajouter une méthode de requète (Find)
+Dans `IBaseRepository<T>` et `BaseRepository<T>`, ajouter une méthode Find qui prendra une fonction de filtrage en paramètre.  
+
+# CRUD
+* C = Create
+* R = Read
+* U = Update
+* D = Delete
+
+## Ajout du Delete
+Dans `IBaseRepository<T>` et `BaseRepository<T>`, ajouter 2 méthodes :
+* Delete(int id)
+* Delete(T model)
+Ajouter les méthodes `DeleteRange` suivante :  
+* DeleteRange(IEnumerable<T> models)
+  * Usage : `repo.Delete(new List<T> {p1, p2, p3})`;
+* DeleteRange(params T[] models)
+  * Usage : `repo.DeleteRange(p1, p2, p3);`
+
+## Ajout de l'Update
+Au niveau du BaseModel, ajouter une propriété `IsNew`  
+Dans BaseInMemoryRepository, ajouter une méthode `NewId()`, qui renverra le prochain id disponible.  
+Dans `BaseRepository`, ajouter la méthode void `Update(T model)` abstraite  

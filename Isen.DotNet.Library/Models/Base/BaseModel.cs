@@ -9,5 +9,7 @@ namespace Isen.DotNet.Library.Models.Base
 
         public override string ToString()
         => Display;
+
+        public bool IsNew => Id <= 0;
     }
 }
