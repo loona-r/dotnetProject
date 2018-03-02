@@ -10,8 +10,12 @@ namespace Isen.DotNet.Library.Repositories.InMemory
         where T : BaseModel
     {
         protected IList<T> _modelCollection;
-        public int NewId() => 
-            GetAll().Max(m => m.Id) +1;
+        public int NewId()
+        {
+            var all = GetAll().ToList();
+            return all.Count == 0 ? 1 :
+                all.Max(m => m.Id) + 1;
+        }
         public override void Delete(int id)
         {
             var list = ModelCollection.ToList();
@@ -22,6 +26,7 @@ namespace Isen.DotNet.Library.Repositories.InMemory
 
         public override void Update(T model)
         {
+            if (model == null) return;
             var list = ModelCollection.ToList();
             if (model.IsNew)
             {
